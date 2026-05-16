@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Three Signature';
+    src: url('../fonts/Three-Signature.eot');
+    src: url('../fonts/Three-Signature.eot#iefix') format('embedded-opentype'),
+         url('../fonts/Three-Signature.woff2') format('woff2'),
+         url('../fonts/Three-Signature.woff') format('woff'),
+         url('../fonts/Three-Signature.ttf')  format('truetype'),
+         url('../images/Three-Signature.svg#Three%20Signature') format('svg');
+}

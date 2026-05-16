@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="color-scheme" content="light only">
+  <title>Iqbal & Shania — Undangan Pernikahan</title>
+  <meta name="description"
+    content="Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami.">
+  <meta property="og:title" content="Iqbal & Shania — Undangan Pernikahan">
+  <meta property="og:description" content="Kami mengundang Anda untuk merayakan hari bahagia kami.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=Amiri:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/wedding.css">
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div id="loader"
+    style="position:fixed;inset:0;z-index:9999;background:#FAFAF7;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s;">
+    <div style="text-align:center;">
+      <div
+        style="width:36px;height:36px;border:3px solid #C5D4A8;border-top-color:#8A9A5B;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem;">
+      </div>
+      <div style="font-family:'Jost',sans-serif;font-size:0.8rem;color:#7A7A7A;letter-spacing:2px;">LOADING</div>
+    </div>
+    <style>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg)
+        }
+      }
+    </style>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="media/Yoon-Mirae-instrumental-OST-Part-2.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ==================== COVER ==================== -->
+  <div id="cover">
+    <div class="cover-bg"></div>
+    <img src="images/tr-sage.png" alt="" class="cover-floral-tr" draggable="false">
+    <img src="images/bl-sage.png" alt="" class="cover-floral-bl" draggable="false">
+    <div class="cover-content">
+      <div class="cover-arabic animate__animated animate__fadeInDown animate__slower" style="animation-delay:0.1s"><img
+          src="images/walimatul%20ursy.png" alt="Walimatul Ursy"
+          style="height: clamp(5rem, 12vw, 7rem); width: auto; margin: 0 auto; filter: brightness(0) invert(1) drop-shadow(2px 2px 5px rgba(0,0,0,0.6));">
+      </div>
+      <div class="cover-subtitle animate__animated animate__fadeInDown animate__slower" style="animation-delay:0.3s">The
+        Wedding Of</div>
+      <div class="cover-names animate__animated animate__fadeInLeft animate__slower" style="animation-delay:0.6s"><img
+          src="images/iqbal.png" alt="Iqbal"
+          style="height: clamp(6.5rem, 16vw, 10rem); width: auto; margin: 0 auto; filter: brightness(0) invert(1) drop-shadow(2px 2px 6px rgba(0,0,0,0.4));">
+      </div>
+      <div class="cover-and animate__animated animate__zoomIn animate__slower" style="animation-delay:0.9s">&amp;</div>
+      <div class="cover-names animate__animated animate__fadeInRight animate__slower" style="animation-delay:0.6s"><img
+          src="images/shania.png" alt="Shania"
+          style="height: clamp(6.5rem, 16vw, 10rem); width: auto; margin: 0 auto; filter: brightness(0) invert(1) drop-shadow(2px 2px 6px rgba(0,0,0,0.4));">
+      </div>
+      <div class="cover-date animate__animated animate__fadeIn animate__slower" style="animation-delay:1.2s">31 · 05 ·
+        2026</div>
+      <div class="cover-divider animate__animated animate__fadeIn animate__slower" style="animation-delay:1.4s"></div>
+      <div class="animate__animated animate__fadeInUp animate__slower" style="animation-delay:1.5s">
+        <div class="cover-guest-label">Kepada Yth.<br>Bapak/Ibu/Saudara/i</div>
+        <div class="cover-guest-name" id="guestNameSlot">Nama Tamu</div>
+      </div>
+      <button id="btnOpen" class="btn-open animate__animated animate__fadeInUp animate__slow"
+        style="animation-delay:1.8s">
+        Buka Undangan
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div id="main-content">
+
+    <!-- SECTION: QUOTES -->
+    <section class="section section-warm" id="quotes">
+      <div class="floral floral-tr"><img src="images/tr-sage.png" alt=""></div>
+      <div class="section-inner">
+        <div class="reveal">
+          <div class="quote-mark">❝</div>
+          <p class="quote-text">Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan
+            untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di
+            antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran
+            Allah) bagi kaum yang berpikir.</p>
+          <div class="quote-ref">— QS. Ar-Rum : 21 —</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: COUPLE -->
+    <section class="section couple-bg" id="couple">
+      <div class="section-inner">
+        <p class="text-small reveal delay-1" style="margin-top:2rem;">Dengan memohon rahmat dan ridho Allah SWT,<br>kami
+          bermaksud menyelenggarakan<br>pernikahan putra-putri kami</p>
+        <div class="ornament reveal delay-1"><span class="ornament-icon">✦</span></div>
+
+        <div class="reveal delay-2">
+          <div class="couple-name" style="font-size: clamp(2.5rem, 8vw, 3.8rem) !important; margin-bottom: 0.5rem;">
+            Iqbal Khairul Awami</div>
+          <p class="couple-parent">Putra dari<br><strong>Bapak Mukhlasin</strong><br>&amp; <strong>Ibu Siti
+              Partyam</strong></p>
+        </div>
+
+        <div class="couple-ampersand reveal delay-3">&amp;</div>
+
+        <div class="reveal delay-3">
+          <div class="couple-name" style="font-size: clamp(2.5rem, 8vw, 3.8rem) !important; margin-bottom: 0.5rem;">
+            Shania Salsabila</div>
+          <p class="couple-parent">Putri dari<br><strong>Bapak Imam</strong><br>&amp; <strong>Ibu Siti
+              Muzaro'ah</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: TASYAKURAN -->
+    <section class="section section-sage" id="resepsi">
+      <div class="floral floral-bl"><img src="images/bl-sage.png" alt=""></div>
+      <div class="section-inner">
+        <div class="heading-section reveal">Tasyakuran Pernikahan</div>
+        <p class="text-small reveal delay-1" style="margin-bottom:1.5rem;">Dengan memohon rahmat dan ridho Allah SWT,
+          kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri tasyakuran pernikahan kami, yang insyaAllah
+          akan diselenggarakan pada:</p>
+        <div class="event-card reveal delay-2">
+          <div class="event-date-row">
+            <div>
+              <div class="event-day-name">AHAD</div>
+              <div class="event-day-sub">Mei 2026</div>
+            </div>
+            <div class="event-day-num">31</div>
+            <div>
+              <div class="event-time-label">PUKUL</div>
+              <div class="event-time-val">09.00 WIB<br>s/d Selesai</div>
+            </div>
+          </div>
+          <div class="event-location">
+            <strong>Kediaman Mempelai Pria</strong>
+            Mijen Timur RT 05 RW 03<br>Kec. Kebonagung, Kab. Demak
+          </div>
+        </div>
+
+        <!-- Countdown Tasyakuran -->
+        <div class="reveal delay-3">
+          <div class="countdown-row" data-date="2026-05-31T09:00:00+07:00">
+            <div class="countdown-item">
+              <div class="countdown-num cd-days">0</div>
+              <div class="countdown-label">Hari</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-num cd-hours">0</div>
+              <div class="countdown-label">Jam</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-num cd-mins">0</div>
+              <div class="countdown-label">Menit</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-num cd-secs">0</div>
+              <div class="countdown-label">Detik</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: AKAD -->
+    <section class="section" id="akad">
+      <div class="floral floral-tr"><img src="images/tr-sage.png" alt=""></div>
+      <div class="section-inner">
+        <div class="heading-section reveal">Akad Nikah</div>
+        <div class="event-card reveal delay-1">
+          <div class="event-date-row">
+            <div>
+              <div class="event-day-name">SELASA</div>
+              <div class="event-day-sub">Juni 2026</div>
+            </div>
+            <div class="event-day-num">02</div>
+            <div>
+              <div class="event-time-label">PUKUL</div>
+              <div class="event-time-val">09.00 WIB<br>s/d Selesai</div>
+            </div>
+          </div>
+          <div class="event-location">
+            <strong>Kediaman Mempelai Wanita</strong>
+            Karangawen RT 01 RW 08<br>Kec. Karangawen, Kab. Demak
+          </div>
+        </div>
+
+        <!-- Countdown Akad -->
+        <div class="reveal delay-2">
+          <div class="countdown-row" data-date="2026-06-02T08:00:00+07:00">
+            <div class="countdown-item">
+              <div class="countdown-num cd-days">0</div>
+              <div class="countdown-label">Hari</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-num cd-hours">0</div>
+              <div class="countdown-label">Jam</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-num cd-mins">0</div>
+              <div class="countdown-label">Menit</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-num cd-secs">0</div>
+              <div class="countdown-label">Detik</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: LOCATION -->
+    <section class="section section-warm" id="location">
+      <div class="section-inner">
+        <div class="heading-section reveal">Lokasi Acara</div>
+
+        <!-- Walimatul Ursy -->
+        <div class="reveal">
+          <div
+            style="font-family:var(--font-sans);font-weight:600;color:var(--primary-dark);margin-bottom:0.3rem; font-size: 1.2rem;">
+            Walimatul Ursy (Tasyakuran)</div>
+          <p class="text-small" style="margin-bottom:1.2rem;"><strong>Kediaman Mempelai Pria</strong><br>Mijen Timur RT
+            05 RW 03<br>Kec. Kebonagung, Kab. Demak</p>
+        </div>
+        <div class="map-frame reveal delay-1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15839.815779346513!2d110.6358826!3d-7.0146055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70e9a5c88c7553%3A0x6b2e1b12d59d91f4!2sMijen%20Timur%2C%20Kebonagung%2C%20Demak!5e0!3m2!1sid!2sid"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="reveal delay-2" style="margin-bottom: 3rem;">
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-direction">
+            📍 Petunjuk Lokasi Walimatul Ursy
+          </a>
+        </div>
+
+        <div class="ornament reveal"><span class="ornament-icon">✦</span></div>
+
+        <!-- Akad Nikah -->
+        <div class="reveal" style="margin-top: 3rem;">
+          <div
+            style="font-family:var(--font-sans);font-weight:600;color:var(--primary-dark);margin-bottom:0.3rem; font-size: 1.2rem;">
+            Akad Nikah</div>
+          <p class="text-small" style="margin-bottom:1.2rem;"><strong>Kediaman Mempelai Wanita</strong><br>Karangawen RT
+            01 RW 08<br>Kec. Karangawen, Kab. Demak</p>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-direction">
+            📍 Petunjuk Lokasi Akad Nikah
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: RSVP & UCAPAN -->
+    <section class="section section-sage" id="rsvp">
+      <div class="floral floral-tr"><img src="images/tr-sage.png" alt=""></div>
+      <div class="floral floral-bl"><img src="images/bl-sage.png" alt=""></div>
+      <div class="section-inner">
+        <div class="heading-section reveal">Ucapan &amp; Doa</div>
+        <p class="text-small reveal delay-1">Kirim ucapan dan doa terbaik<br>untuk kedua mempelai</p>
+
+        <form id="rsvpForm" class="rsvp-form reveal delay-2">
+          <div class="form-group">
+            <label for="rsvpName">Nama</label>
+            <input type="text" class="form-control" id="rsvpName" placeholder="Nama Anda" required>
+          </div>
+          <div class="form-group">
+            <label>Kehadiran</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="attend-yes" name="attendance" value="hadir" required>
+                <label for="attend-yes">✓ Hadir</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="attend-no" name="attendance" value="tidak hadir">
+                <label for="attend-no">✗ Tidak Hadir</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rsvpMessage">Ucapan</label>
+            <textarea class="form-control" id="rsvpMessage" placeholder="Tulis ucapan untuk mempelai..."
+              required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Kirim Ucapan</button>
+        </form>
+
+        <div class="wishes-list reveal delay-3" id="wishesList"></div>
+      </div>
+    </section>
+
+    <!-- SECTION: GIFT -->
+    <section class="section" id="gift">
+      <div class="section-inner">
+        <div class="heading-section reveal">Tanda Kasih</div>
+        <p class="text-small reveal delay-1" style="margin-bottom:1.5rem;">Terima kasih telah menambah semangat
+          kegembiraan pernikahan kami dengan kehadiran dan hadiah indah Anda.</p>
+
+        <div class="gift-card reveal delay-2">
+          <img src="images/logo-bca-biru-1687975058.png" alt="BCA" class="gift-bank-logo">
+          <div class="gift-account">1234567890</div>
+          <div class="gift-name">a.n. Shania Salsabila</div>
+          <button class="btn-copy" onclick="copyText('1234567890', this)">📋 Salin No. Rekening</button>
+        </div>
+
+        <div class="gift-card reveal delay-3">
+          <div style="font-family:var(--font-sans);font-weight:600;color:var(--primary-dark);margin-bottom:0.5rem;">🎁
+            Kirim Kado</div>
+          <p class="text-small">Anda dapat mengirim kado ke:<br><strong>Shania Salsabila</strong><br>Karangawen RT 01 RW
+            08<br>Kec. Karangawen, Kab. Demak, Indonesia</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CLOSING -->
+    <section class="section section-warm" id="closing">
+      <div class="floral floral-tr"><img src="images/tr-sage.png" alt=""></div>
+      <div class="floral floral-bl"><img src="images/bl-sage.png" alt=""></div>
+      <div class="section-inner">
+        <div class="reveal">
+          <p class="text-body">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan
+            hadir untuk memberikan doa restu kepada kami.</p>
+          <div class="ornament"><span class="ornament-icon">✦</span></div>
+          <div class="heading-script" style="margin-bottom:0.5rem;">Iqbal &amp; Shania</div>
+          <p class="text-small" style="font-style:italic;">Kami yang berbahagia</p>
+        </div>
+
+        <div class="closing-families reveal delay-2">
+          <div>
+            <div class="closing-family-label">Keluarga Mempelai Pria</div>
+            <div class="closing-family-names">Bapak Mukhlasin<br>&amp; Ibu Siti Partyam</div>
+          </div>
+          <div>
+            <div class="closing-family-label">Keluarga Mempelai Wanita</div>
+            <div class="closing-family-names">Bapak Imam<br>&amp; Ibu Siti Muzaro'ah</div>
+          </div>
+        </div>
+
+        <div class="reveal delay-3" style="margin-top:3rem;">
+          <p class="text-muted" style="font-size:0.7rem;color:var(--text-muted);">
+            Wassalamu'alaikum Warahmatullahi Wabarakatuh
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end main-content -->
+
+  <!-- MUSIC BUTTON -->
+  <button id="musicBtn" class="music-btn" aria-label="Toggle Music">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+    </svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="4" width="4" height="16"></rect>
+      <rect x="14" y="4" width="4" height="16"></rect>
+    </svg>
+  </button>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav" id="bottomNav">
+    <a href="#quotes" class="nav-item active">
+      <span class="nav-icon">📖</span>
+      <span class="nav-label">Kisah</span>
+    </a>
+    <a href="#couple" class="nav-item">
+      <span class="nav-icon">💍</span>
+      <span class="nav-label">Mempelai</span>
+    </a>
+    <a href="#resepsi" class="nav-item">
+      <span class="nav-icon">📅</span>
+      <span class="nav-label">Acara</span>
+    </a>
+    <a href="#location" class="nav-item">
+      <span class="nav-icon">📍</span>
+      <span class="nav-label">Lokasi</span>
+    </a>
+    <a href="#rsvp" class="nav-item">
+      <span class="nav-icon">💌</span>
+      <span class="nav-label">RSVP</span>
+    </a>
+  </nav>
+
+  <!-- SCRIPTS -->
+  <script src="js/guest-url-param.js"></script>
+  <script src="js/wedding.js"></script>
+</body>
+
+</html>

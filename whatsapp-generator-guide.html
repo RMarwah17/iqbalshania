@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Generator - Panduan Lengkap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .sidebar h3 {
+            color: #128C7E;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #25D366;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 0;
+        }
+
+        .main {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 20px;
+        }
+
+        .section h2 {
+            color: #128C7E;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #25D366;
+        }
+
+        .section h3 {
+            color: #25D366;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section h4 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .danger-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #128C7E;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 12px;
+            font-size: 20px;
+            color: #128C7E;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #25D366;
+        }
+
+        .feature-card h4 {
+            color: #128C7E;
+            margin-top: 0;
+        }
+
+        .emoji {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 WhatsApp Message Generator</h1>
+            <p>Panduan Lengkap & Tutorial</p>
+            <p style="margin-top: 10px; font-size: 14px;">IQBAL CHOIRUL AWAMI & SHANIA SALSABILA | 02 Juni 2026</p>
+        </div>
+
+        <div class="content">
+            <nav class="sidebar">
+                <h3>📋 Daftar Isi</h3>
+                <ul>
+                    <li><a href="#intro">🎯 Pengenalan</a></li>
+                    <li><a href="#usage">🚀 Cara Menggunakan</a></li>
+                    <li><a href="#features">⭐ Fitur-Fitur</a></li>
+                    <li><a href="#templates">📝 Template Pesan</a></li>
+                    <li><a href="#bulk">📦 Bulk Generator</a></li>
+                    <li><a href="#tips">💡 Tips & Trik</a></li>
+                    <li><a href="#usecases">🎯 Use Cases</a></li>
+                    <li><a href="#troubleshooting">🔧 Troubleshooting</a></li>
+                    <li><a href="#bestpractices">📊 Best Practices</a></li>
+                    <li><a href="#checklist">✅ Checklist</a></li>
+                </ul>
+            </nav>
+
+            <main class="main">
+                <!-- Pengenalan -->
+                <section id="intro" class="section">
+                    <h2><span class="emoji">🎯</span>Pengenalan</h2>
+
+                    <p>WhatsApp Message Generator adalah tool untuk membuat pesan undangan pernikahan yang
+                        dipersonalisasi secara otomatis. Setiap tamu akan mendapatkan:</p>
+
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li>Pesan undangan dengan nama mereka</li>
+                        <li>URL undangan digital yang personal</li>
+                        <li>Format profesional dan konsisten</li>
+                    </ul>
+
+                    <h3>Kenapa Menggunakan Tool Ini?</h3>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>⏱️ Hemat Waktu</h4>
+                            <p>Generate ratusan pesan dalam hitungan detik</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>👤 Personal</h4>
+                            <p>Setiap tamu mendapat URL dengan namanya</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>💼 Profesional</h4>
+                            <p>Template yang sudah didesain dengan baik</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>📊 Tracking</h4>
+                            <p>URL berbeda memudahkan tracking siapa yang buka undangan</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cara Menggunakan -->
+                <section id="usage" class="section">
+                    <h2><span class="emoji">🚀</span>Cara Menggunakan</h2>
+
+                    <h3>Langkah 1: Buka Tool</h3>
+                    <ol style="margin-left: 30px;">
+                        <li>Buka Link <code>https://raz.my.id/iqbalshania/whatsapp-generator.html</code> dengan browser
+                        </li>
+                        <li>Pastikan koneksi internet aktif (opsional, tool tetap bisa digunakan offline)</li>
+                    </ol>
+
+                    <h3>Langkah 2: Pilih Template</h3>
+                    <p>Klik salah satu dari 4 template yang tersedia:</p>
+                    <ul style="margin-left: 30px;">
+                        <li><strong>Formal</strong> - Untuk keluarga besar, tamu VIP</li>
+                        <li><strong>Santai</strong> - Untuk teman dekat</li>
+                        <li><strong>Singkat</strong> - Untuk broadcast cepat</li>
+                        <li><strong>Custom</strong> - Edit sendiri sesuai keinginan</li>
+                    </ul>
+
+                    <h3>Langkah 3: Isi Data</h3>
+                    <div class="info-box">
+                        <strong>Base URL</strong> sudah otomatis terisi:
+                        <code>https://raz.my.id/iqbalshania/index.html</code><br>
+                        <em>Bisa diubah jika deploy di domain lain</em>
+                    </div>
+
+                    <p><strong>Nama Tamu</strong> - Ketik nama tamu, contoh:</p>
+                    <ul style="margin-left: 30px;">
+                        <li><code>Bapak Ahmad dan Keluarga</code></li>
+                        <li><code>Ibu Siti</code></li>
+                        <li><code>Dr. Budi Santoso, M.Sc.</code></li>
+                    </ul>
+
+                    <h3>Langkah 4: Generate</h3>
+                    <ol style="margin-left: 30px;">
+                        <li>Klik tombol <strong>"Generate WhatsApp Message"</strong></li>
+                        <li>Preview pesan akan muncul di bawah</li>
+                        <li>URL personal juga akan ditampilkan</li>
+                    </ol>
+
+                    <h3>Langkah 5: Kirim</h3>
+                    <p>Pilih salah satu cara:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>📋 <strong>Copy Pesan</strong> - Copy pesan, paste ke WhatsApp manual</li>
+                        <li>🔗 <strong>Copy URL</strong> - Copy hanya URL-nya</li>
+                        <li>💬 <strong>Buka WhatsApp</strong> - Langsung buka WhatsApp Web dengan pesan</li>
+                        <li>💾 <strong>Download TXT</strong> - Simpan sebagai file text</li>
+                    </ul>
+                </section>
+
+                <!-- Fitur-Fitur -->
+                <section id="features" class="section">
+                    <h2><span class="emoji">⭐</span>Fitur-Fitur</h2>
+
+                    <h3>1. Single Message Generator</h3>
+                    <p>Generate pesan untuk 1 tamu per kali.</p>
+                    <div class="success-box">
+                        <strong>Kapan digunakan:</strong>
+                        <ul style="margin: 10px 0 0 20px;">
+                            <li>Tamu VIP yang perlu pesan khusus</li>
+                            <li>Testing template sebelum bulk send</li>
+                            <li>Tamu yang baru ditambahkan</li>
+                        </ul>
+                    </div>
+
+                    <h3>2. Bulk Message Generator</h3>
+                    <p>Generate pesan untuk banyak tamu sekaligus.</p>
+                    <div class="success-box">
+                        <strong>Cara pakai:</strong>
+                        <ol style="margin: 10px 0 0 20px;">
+                            <li>Scroll ke bagian "Bulk Message Generator"</li>
+                            <li>Masukkan daftar nama (1 nama per baris)</li>
+                            <li>Klik "Generate Bulk Messages"</li>
+                            <li>Download hasil dalam format CSV atau TXT</li>
+                        </ol>
+                    </div>
+
+                    <h3>3. Statistics</h3>
+                    <p>Monitor berapa pesan yang sudah dibuat:</p>
+                    <ul style="margin-left: 30px;">
+                        <li>Total pesan yang di-generate</li>
+                        <li>Jumlah karakter</li>
+                        <li>Panjang URL</li>
+                    </ul>
+                </section>
+
+                <!-- Template Pesan -->
+                <section id="templates" class="section">
+                    <h2><span class="emoji">📝</span>Template Pesan</h2>
+
+                    <h3>Template 1: Formal</h3>
+                    <p><strong>Cocok untuk:</strong> Keluarga besar, Tamu senior/sepuh, Kolega kerja, Tetangga</p>
+                    <p><strong>Panjang:</strong> ~600 karakter</p>
+                    <pre><code>Assalamualaikum Warahmatullahi Wabarakatuh
+
+Kepada Yth.
+{NAMA_TAMU}
+
+Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud 
+mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan 
+putra-putri kami:
+
+*IQBAL CHOIRUL AWAMI & SHANIA SALSABILA*
+
+📅 Selasa, 02 Juni 2026
+⏰ Pukul 09.00 WIB s.d Selesai
+📍 Kediaman Mempelai Wanita
+    KARANGAWEN RT.01 RW.08, KEC. KARANGAWEN
+    KAB. DEMAK - JAWA TENGAH
+
+Untuk informasi lebih lengkap dan konfirmasi kehadiran, 
+silakan buka undangan digital kami:
+{URL}
+
+Wassalamualaikum Warahmatullahi Wabarakatuh
+
+Hormat kami,
+Keluarga Besar Mempelai</code></pre>
+
+                    <h3>Template 2: Casual (Santai)</h3>
+                    <p><strong>Cocok untuk:</strong> Teman dekat, Teman kuliah/sekolah, Komunitas</p>
+                    <p><strong>Panjang:</strong> ~200 karakter</p>
+                    <pre><code>Halo {NAMA_TAMU}! 👋
+
+Kami mengundang kamu untuk hadir di pernikahan:
+
+*IQBAL & SHANIA* 💑
+
+📅 Selasa, 02 Juni 2026
+⏰ Jam 09.00 WIB
+📍 Kediaman Mempelai Wanita, Karangawen, Demak
+
+Lihat undangan lengkapnya di:
+{URL}
+
+Ditunggu kehadirannya ya! 🙏✨</code></pre>
+
+                    <h3>Template 3: Short (Singkat)</h3>
+                    <p><strong>Cocok untuk:</strong> Broadcast massal, Timeline WhatsApp Status, Quick reminder</p>
+                    <p><strong>Panjang:</strong> ~150 karakter</p>
+                    <pre><code>Undangan Pernikahan
+*IQBAL & SHANIA*
+
+📅 02 Jun 2026, 09.00 WIB
+📍 Karangawen, Kab. Demak
+
+Untuk {NAMA_TAMU}
+Undangan: {URL}
+
+Ditunggu kehadirannya 🙏</code></pre>
+
+                    <h3>Template 4: Custom</h3>
+                    <p>Edit sendiri sesuai keinginan!</p>
+                    <div class="info-box">
+                        <strong>Placeholder yang bisa dipakai:</strong>
+                        <ul style="margin: 10px 0 0 20px;">
+                            <li><code>{NAMA_TAMU}</code> - Akan diganti dengan nama tamu</li>
+                            <li><code>{URL}</code> - Akan diganti dengan URL personal</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Bulk Generator -->
+                <section id="bulk" class="section">
+                    <h2><span class="emoji">📦</span>Bulk Generator - Panduan Lengkap</h2>
+
+                    <h3>Persiapan Daftar Tamu</h3>
+                    <ol style="margin-left: 30px;">
+                        <li>Buat daftar di spreadsheet (Excel/Google Sheets)</li>
+                        <li>Copy kolom nama</li>
+                        <li>Paste ke Bulk Generator</li>
+                        <li>Pastikan 1 nama per baris</li>
+                    </ol>
+
+                    <h3>Contoh Format</h3>
+                    <div class="success-box">
+                        <strong>✅ BENAR:</strong>
+                        <pre style="margin-top: 10px;"><code>Bapak Ahmad dan Keluarga
+Ibu Siti Nurhaliza
+Dr. Budi Santoso, M.Sc.
+H. Rahman & Keluarga</code></pre>
+                    </div>
+
+                    <div class="danger-box">
+                        <strong>❌ SALAH:</strong>
+                        <pre style="margin-top: 10px;"><code>Bapak Ahmad, Ibu Siti (jangan pakai koma untuk pisah nama)
+
+Bapak Ahmad (jangan ada baris kosong)</code></pre>
+                    </div>
+
+                    <h3>Export Results</h3>
+
+                    <h4>Option 1: Download CSV</h4>
+                    <p>File CSV berisi 3 kolom: Nama Tamu, URL Personal, Pesan WhatsApp Lengkap</p>
+                    <p><strong>Gunakan untuk:</strong> Import ke Excel/Google Sheets, Analisis data, Integrasi dengan
+                        sistem lain</p>
+
+                    <h4>Option 2: Download TXT</h4>
+                    <p>File TXT berisi daftar lengkap semua pesan terformat rapi per tamu</p>
+                    <p><strong>Gunakan untuk:</strong> Print untuk referensi, Share dengan keluarga, Backup</p>
+                </section>
+
+                <!-- Tips & Trik -->
+                <section id="tips" class="section">
+                    <h2><span class="emoji">💡</span>Tips & Trik</h2>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>🔗 Shortlink URL</h4>
+                            <p>Gunakan bit.ly, tinyurl, atau s.id untuk URL lebih pendek</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>👥 Personalisasi Per Kategori</h4>
+                            <p>Buat template berbeda untuk kategori tamu berbeda</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🧪 Testing Dulu</h4>
+                            <p>Kirim ke diri sendiri dulu untuk cek format</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>📅 Jadwal Pengiriman</h4>
+                            <p>H-30, H-14, H-7, H-1 untuk reminder</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 30px;">
+                        <h4>📍 Timeline Pengiriman yang Disarankan:</h4>
+                        <ul style="margin: 10px 0 0 20px;">
+                            <li><strong>H-30</strong> - Keluarga besar & tamu jauh</li>
+                            <li><strong>H-14</strong> - Teman dekat & tetangga</li>
+                            <li><strong>H-7</strong> - Reminder untuk semua tamu</li>
+                            <li><strong>H-1</strong> - Reminder terakhir</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section id="usecases" class="section">
+                    <h2><span class="emoji">🎯</span>Use Cases & Contoh</h2>
+
+                    <h3>Use Case 1: Family WhatsApp Group</h3>
+                    <div class="info-box">
+                        <p><strong>Scenario:</strong> Broadcast di grup keluarga besar</p>
+                        <p><strong>Template:</strong> Formal</p>
+                        <p><strong>Cara:</strong> Generate 1 pesan untuk "Keluarga Besar" dengan URL umum tanpa
+                            parameter nama</p>
+                    </div>
+
+                    <h3>Use Case 2: VIP Personal Message</h3>
+                    <div class="info-box">
+                        <p><strong>Scenario:</strong> Tamu spesial (atasan, tokoh masyarakat)</p>
+                        <p><strong>Template:</strong> Custom dengan pengantar khusus</p>
+                        <p><strong>Cara:</strong> Edit template formal, tambah kalimat pembuka personal</p>
+                    </div>
+
+                    <h3>Use Case 3: Teman Kuliah</h3>
+                    <div class="info-box">
+                        <p><strong>Scenario:</strong> Grup alumni kampus</p>
+                        <p><strong>Template:</strong> Casual</p>
+                        <p><strong>Cara:</strong> Bulk generate untuk semua teman, kirim personal satu-satu</p>
+                    </div>
+
+                    <h3>Use Case 4: Digital QR Code</h3>
+                    <div class="info-box">
+                        <p><strong>Scenario:</strong> Print QR code di kartu fisik</p>
+                        <p><strong>Cara:</strong> Generate URL → Buat QR Code → Print di kartu → Guest scan → Langsung
+                            masuk web</p>
+                    </div>
+                </section>
+
+                <!-- Troubleshooting -->
+                <section id="troubleshooting" class="section">
+                    <h2><span class="emoji">🔧</span>Troubleshooting</h2>
+
+                    <h3>Problem 1: URL Terlalu Panjang</h3>
+                    <div class="warning-box">
+                        <strong>Solusi:</strong>
+                        <ul style="margin: 10px 0 0 20px;">
+                            <li>Gunakan URL shortener (bit.ly, s.id)</li>
+                            <li>Deploy di domain pendek</li>
+                            <li>Jangan pakai nama yang terlalu panjang</li>
+                        </ul>
+                    </div>
+
+                    <h3>Problem 2: Nama dengan Karakter Khusus</h3>
+                    <div class="success-box">
+                        <p>Contoh: <code>H. Ahmad & Ibu Siti</code></p>
+                        <p><strong>Solusi:</strong> Tool otomatis encode karakter khusus. & menjadi %26, Spasi menjadi
+                            %20. Tetap aman digunakan ✅</p>
+                    </div>
+
+                    <h3>Problem 3: Template Hilang</h3>
+                    <div class="success-box">
+                        <strong>Solusi:</strong>
+                        <ol style="margin: 10px 0 0 20px;">
+                            <li>Refresh halaman (F5)</li>
+                            <li>Template akan auto-load saat halaman dibuka</li>
+                            <li>Klik tombol template untuk ganti</li>
+                        </ol>
+                    </div>
+
+                    <h3>Problem 4: Copy Tidak Berfungsi</h3>
+                    <div class="info-box">
+                        <strong>Solusi:</strong>
+                        <ul style="margin: 10px 0 0 20px;">
+                            <li>Pastikan browser mendukung Clipboard API</li>
+                            <li>Gunakan browser modern (Chrome, Edge, Firefox)</li>
+                            <li>Atau klik manual text → Ctrl+C</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Best Practices -->
+                <section id="bestpractices" class="section">
+                    <h2><span class="emoji">📊</span>Best Practices</h2>
+
+                    <h3>1. Organisasi Data</h3>
+                    <p>Gunakan Spreadsheet untuk tracking:</p>
+                    <table>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Tamu</th>
+                            <th>Kategori</th>
+                            <th>URL</th>
+                            <th>Status Kirim</th>
+                            <th>Status Buka</th>
+                            <th>RSVP</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Bapak Ahmad</td>
+                            <td>Keluarga</td>
+                            <td>bit.ly/x1</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>Hadir</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Ibu Siti</td>
+                            <td>Teman</td>
+                            <td>bit.ly/x2</td>
+                            <td>✅</td>
+                            <td>⏳</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+
+                    <h3>2. Backup Pesan</h3>
+                    <ul style="margin-left: 30px;">
+                        <li>Download TXT dari bulk generator</li>
+                        <li>Simpan di Google Drive / OneDrive</li>
+                        <li>Buat folder terpisah per kategori</li>
+                    </ul>
+
+                    <h3>3. Response Time</h3>
+                    <ul style="margin-left: 30px;">
+                        <li>Setup auto-reply di WA Business</li>
+                        <li>Siapkan FAQ</li>
+                        <li>Tentukan PIC untuk jawab pertanyaan</li>
+                    </ul>
+
+                    <h3>4. Privacy</h3>
+                    <div class="danger-box">
+                        <strong>⚠️ Jangan share URL tamu lain!</strong>
+                        <ul style="margin: 10px 0 0 20px;">
+                            <li>Setiap URL personal untuk tamu tertentu</li>
+                            <li>Jangan posting URL ke social media</li>
+                            <li>Gunakan URL umum untuk posting publik</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Checklist -->
+                <section id="checklist" class="section">
+                    <h2><span class="emoji">✅</span>Checklist Pengiriman</h2>
+
+                    <h3>Sebelum Generate</h3>
+                    <ul class="checklist">
+                        <li>Data tamu sudah lengkap dan valid</li>
+                        <li>Template sudah dipilih dan di-review</li>
+                        <li>Base URL sudah benar</li>
+                        <li>Testing 1 pesan ke diri sendiri</li>
+                    </ul>
+
+                    <h3>Sebelum Kirim</h3>
+                    <ul class="checklist">
+                        <li>Pesan sudah di-generate semua</li>
+                        <li>Backup file CSV/TXT sudah disimpan</li>
+                        <li>Spreadsheet tracking sudah siap</li>
+                        <li>Waktu kirim sudah dijadwalkan</li>
+                    </ul>
+
+                    <h3>Saat Kirim</h3>
+                    <ul class="checklist">
+                        <li>Kirim bertahap (jangan spam)</li>
+                        <li>Monitor delivery rate</li>
+                        <li>Siap jawab pertanyaan</li>
+                        <li>Update status di spreadsheet</li>
+                    </ul>
+
+                    <h3>Setelah Kirim</h3>
+                    <ul class="checklist">
+                        <li>Follow-up yang belum baca</li>
+                        <li>Reminder H-7 dan H-1</li>
+                        <li>Update RSVP count</li>
+                        <li>Terima kasih ke yang confirm</li>
+                    </ul>
+                </section>
+
+                <!-- Tips Terakhir -->
+                <section class="section">
+                    <h2><span class="emoji">⭐</span>Tips Terakhir</h2>
+                    <div class="success-box">
+                        <ol style="margin-left: 20px;">
+                            <li><strong>Test dulu</strong> sebelum kirim massal</li>
+                            <li><strong>Backup data tamu</strong> di 2 tempat minimal</li>
+                            <li><strong>Jadwalkan waktu kirim</strong> - jangan tengah malam!</li>
+                            <li><strong>Personal touch</strong> - tambah 1-2 kalimat personal untuk tamu spesial</li>
+                            <li><strong>Follow-up</strong> - reminder H-7 dan H-1</li>
+                            <li><strong>Say thanks</strong> - ucapkan terima kasih setelah acara</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <div style="text-align: center; padding: 40px 0; border-top: 2px solid #f0f0f0; margin-top: 50px;">
+                    <h2 style="color: #25D366; margin-bottom: 20px;">Semoga pernikahan Iqbal & Shania berjalan lancar! 🎉💑
+                    </h2>
+                    <p style="color: #666; font-size: 14px;">Generated with ❤️ for Iqbal & Shania Wedding</p>
+                    <p style="color: #999; font-size: 12px; margin-top: 10px;">Last Updated: 15 Mei 2026</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top">↑</a>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top
+        document.querySelector('.back-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Highlight active section in sidebar
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.sidebar a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.background = '';
+                link.style.color = '';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.background = '#25D366';
+                    link.style.color = 'white';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

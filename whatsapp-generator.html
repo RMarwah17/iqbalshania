@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Message Generator - Wedding Invitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .wedding-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #25D366;
+        }
+
+        .wedding-info h3 {
+            color: #128C7E;
+            margin-bottom: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .info-item .icon {
+            color: #25D366;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .info-item .text {
+            flex: 1;
+        }
+
+        .info-item .label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .info-item .value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #25D366;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 200px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        .template-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .template-btn {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+        }
+
+        .template-btn:hover {
+            border-color: #25D366;
+            background: #f0fdf4;
+        }
+
+        .template-btn.active {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+
+        button.primary {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .output-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .preview-box {
+            background: #e7f3e8;
+            border: 2px solid #25D366;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button.secondary {
+            background: white;
+            color: #25D366;
+            border: 2px solid #25D366;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button.secondary:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #25D366;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .bulk-section {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .bulk-section h3 {
+            color: #f57c00;
+            margin-bottom: 15px;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💬 WhatsApp Message Generator</h1>
+            <p>Wedding Invitation - IQBAL CHOIRUL AWAMI & SHANIA SALSABILA</p>
+        </div>
+
+        <div class="content">
+            <!-- Wedding Info -->
+            <div class="wedding-info">
+                <h3>📋 Informasi Pernikahan</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="icon">👰🤵</span>
+                        <div class="text">
+                            <div class="label">Mempelai</div>
+                            <div class="value">Iqbal & Shania</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">📅</span>
+                        <div class="text">
+                            <div class="label">Tanggal</div>
+                            <div class="value">Selasa, 02 Juni 2026</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">⏰</span>
+                        <div class="text">
+                            <div class="label">Waktu</div>
+                            <div class="value">09.00 WIB s.d Selesai</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">📍</span>
+                        <div class="text">
+                            <div class="label">Lokasi</div>
+                            <div class="value">Kediaman Mempelai Wanita</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalGenerated">0</div>
+                    <div class="stat-label">Pesan Dibuat</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="charCount">0</div>
+                    <div class="stat-label">Karakter</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="urlLength">0</div>
+                    <div class="stat-label">Panjang URL</div>
+                </div>
+            </div>
+
+            <!-- Template Selector -->
+            <div class="form-group">
+                <label>📝 Pilih Template:</label>
+                <div class="template-selector">
+                    <button class="template-btn active" onclick="selectTemplate('formal')">Formal</button>
+                    <button class="template-btn" onclick="selectTemplate('casual')">Santai</button>
+                    <button class="template-btn" onclick="selectTemplate('short')">Singkat</button>
+                    <button class="template-btn" onclick="selectTemplate('custom')">Custom</button>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="form-group">
+                <label for="baseUrl">🔗 Base URL Website:</label>
+                <input type="url" id="baseUrl" value="https://raz.my.id/iqbalshania/index.html"
+                    placeholder="https://raz.my.id/iqbalshania/index.html">
+                <div class="hint">URL sudah diset ke https://raz.my.id/iqbalshania/ - bisa diubah jika perlu</div>
+            </div>
+
+            <div class="form-group">
+                <label for="guestName">👤 Nama Tamu:</label>
+                <input type="text" id="guestName" placeholder="Contoh: Bapak Ahmad dan Keluarga">
+            </div>
+
+            <div class="form-group">
+                <label for="messageTemplate">✉️ Template Pesan:</label>
+                <textarea id="messageTemplate" placeholder="Template pesan akan muncul di sini..."></textarea>
+                <div class="char-counter">
+                    <span id="messageCharCount">0</span> karakter
+                </div>
+            </div>
+
+            <button class="primary" onclick="generateMessage()">
+                <span style="display: inline-flex; align-items: center; gap: 8px; justify-content: center;">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52c.149-.174.198-.298.298-.497c.099-.198.05-.371-.025-.52c-.075-.149-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413c.248-.694.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214l-3.741.982l.998-3.648l-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                    </svg>
+                    Generate WhatsApp Message
+                </span>
+            </button>
+
+            <!-- Output Section -->
+            <div class="output-section" id="outputSection" style="display: none;">
+                <h3>📱 Preview Pesan</h3>
+                <div class="preview-box" id="messagePreview"></div>
+
+                <h3 style="margin-top: 20px;">🔗 URL Personal</h3>
+                <div class="preview-box" id="urlPreview"
+                    style="background: #e3f2fd; border-color: #2196F3; font-family: monospace; font-size: 12px;"></div>
+
+                <div class="button-group">
+                    <button class="secondary" onclick="copyMessage()">
+                        📋 Copy Pesan
+                    </button>
+                    <button class="secondary" onclick="copyUrl()">
+                        🔗 Copy URL
+                    </button>
+                    <button class="secondary" onclick="openWhatsApp()">
+                        💬 Buka WhatsApp
+                    </button>
+                    <button class="secondary" onclick="downloadText()">
+                        💾 Download TXT
+                    </button>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    ✅ <span id="successText">Berhasil dicopy!</span>
+                </div>
+            </div>
+
+            <!-- Bulk Generator -->
+            <div class="bulk-section">
+                <h3>📦 Bulk Message Generator</h3>
+                <p style="margin-bottom: 15px; font-size: 14px;">Generate pesan WhatsApp untuk banyak tamu sekaligus</p>
+
+                <div class="form-group">
+                    <label for="bulkGuests">Daftar Tamu (satu nama per baris):</label>
+                    <textarea id="bulkGuests" placeholder="Bapak Ahmad dan Keluarga
+Ibu Siti
+Keluarga Besar Pak Hasan
+Dr. Budi Santoso" style="min-height: 120px;"></textarea>
+                </div>
+
+                <button class="primary" onclick="generateBulkMessages()">
+                    📦 Generate Bulk Messages
+                </button>
+
+                <div id="bulkOutput" style="display: none; margin-top: 20px;">
+                    <h4>📝 Hasil Generate:</h4>
+                    <div class="button-group" style="margin-top: 15px;">
+                        <button class="secondary" onclick="downloadBulkCSV()">
+                            📥 Download CSV
+                        </button>
+                        <button class="secondary" onclick="downloadBulkTXT()">
+                            📥 Download TXT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentTemplate = 'formal';
+        let generatedCount = 0;
+        let currentMessage = '';
+        let currentUrl = '';
+        let bulkData = [];
+
+        const templates = {
+            formal: `Assalamualaikum Warahmatullahi Wabarakatuh
+
+Kepada Yth.
+{NAMA_TAMU}
+
+Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan putra-putri kami:
+
+*IQBAL CHOIRUL AWAMI & SHANIA SALSABILA*
+
+📅 Selasa, 02 Juni 2026
+⏰ Pukul 09.00 WIB s.d Selesai
+📍 Kediaman Mempelai Wanita
+    KARANGAWEN RT.01 RW.08, KEC. KARANGAWEN
+    KAB. DEMAK - JAWA TENGAH
+
+
+Untuk informasi lebih lengkap dan konfirmasi kehadiran, silakan buka undangan digital kami:
+{URL}
+
+Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+
+Wassalamualaikum Warahmatullahi Wabarakatuh
+
+Hormat kami,
+Keluarga Besar Mempelai`,
+
+            casual: `Halo {NAMA_TAMU}! 👋
+
+Kami mengundang kamu untuk hadir di pernikahan:
+
+*IQBAL & SHANIA* 💑
+
+📅 Selasa, 02 Juni 2026
+⏰ Jam 09.00 WIB
+📍 Kediaman Mempelai Wanita, Karangawen, Demak
+
+Lihat undangan lengkapnya di:
+{URL}
+
+Ditunggu kehadirannya ya! 🙏✨`,
+
+            short: `Undangan Pernikahan
+*IQBAL & SHANIA*
+
+📅 02 Jun 2026, 09.00 WIB
+📍 Karangawen, Kab. Demak
+
+Untuk {NAMA_TAMU}
+Undangan: {URL}
+
+Ditunggu kehadirannya 🙏`,
+
+            custom: `Tulis template custom Anda di sini...
+
+Gunakan {NAMA_TAMU} untuk nama tamu
+Gunakan {URL} untuk link undangan`
+        };
+
+        function selectTemplate(template) {
+            currentTemplate = template;
+
+            // Update active button
+            document.querySelectorAll('.template-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update template textarea
+            document.getElementById('messageTemplate').value = templates[template];
+            updateCharCount();
+        }
+
+        function updateCharCount() {
+            const message = document.getElementById('messageTemplate').value;
+            const charCount = message.length;
+            document.getElementById('messageCharCount').textContent = charCount;
+        }
+
+        function generateMessage() {
+            const baseUrl = document.getElementById('baseUrl').value.trim();
+            const guestName = document.getElementById('guestName').value.trim();
+            const template = document.getElementById('messageTemplate').value;
+
+            if (!baseUrl || !guestName) {
+                alert('Mohon isi Base URL dan Nama Tamu');
+                return;
+            }
+
+            // Generate URL
+            currentUrl = baseUrl + '?nama=' + encodeURIComponent(guestName);
+
+            // Generate message
+            currentMessage = template
+                .replace(/{NAMA_TAMU}/g, guestName)
+                .replace(/{URL}/g, currentUrl);
+
+            // Display
+            document.getElementById('messagePreview').textContent = currentMessage;
+            document.getElementById('urlPreview').textContent = currentUrl;
+            document.getElementById('outputSection').style.display = 'block';
+
+            // Update stats
+            generatedCount++;
+            document.getElementById('totalGenerated').textContent = generatedCount;
+            document.getElementById('charCount').textContent = currentMessage.length;
+            document.getElementById('urlLength').textContent = currentUrl.length;
+
+            // Scroll to output
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyMessage() {
+            navigator.clipboard.writeText(currentMessage).then(() => {
+                showSuccess('Pesan berhasil dicopy!');
+            });
+        }
+
+        function copyUrl() {
+            navigator.clipboard.writeText(currentUrl).then(() => {
+                showSuccess('URL berhasil dicopy!');
+            });
+        }
+
+        function openWhatsApp() {
+            const waUrl = 'https://wa.me/?text=' + encodeURIComponent(currentMessage);
+            window.open(waUrl, '_blank');
+        }
+
+        function downloadText() {
+            const blob = new Blob([currentMessage], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'undangan-whatsapp.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function showSuccess(message) {
+            const successEl = document.getElementById('successMessage');
+            document.getElementById('successText').textContent = message;
+            successEl.style.display = 'flex';
+            setTimeout(() => {
+                successEl.style.display = 'none';
+            }, 3000);
+        }
+
+        function generateBulkMessages() {
+            const baseUrl = document.getElementById('baseUrl').value.trim();
+            const guestsText = document.getElementById('bulkGuests').value.trim();
+            const template = document.getElementById('messageTemplate').value;
+
+            if (!baseUrl || !guestsText) {
+                alert('Mohon isi Base URL dan Daftar Tamu');
+                return;
+            }
+
+            const guests = guestsText.split('\n').filter(g => g.trim() !== '');
+            bulkData = [];
+
+            guests.forEach(guestName => {
+                const url = baseUrl + '?nama=' + encodeURIComponent(guestName.trim());
+                const message = template
+                    .replace(/{NAMA_TAMU}/g, guestName.trim())
+                    .replace(/{URL}/g, url);
+
+                bulkData.push({
+                    name: guestName.trim(),
+                    url: url,
+                    message: message
+                });
+            });
+
+            document.getElementById('bulkOutput').style.display = 'block';
+            showSuccess(`${guests.length} pesan berhasil digenerate!`);
+        }
+
+        function downloadBulkCSV() {
+            let csv = 'Nama Tamu,URL,Pesan WhatsApp\n';
+            bulkData.forEach(item => {
+                csv += `"${item.name}","${item.url}","${item.message.replace(/"/g, '""')}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'bulk-whatsapp-messages.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadBulkTXT() {
+            let txt = 'DAFTAR PESAN WHATSAPP - UNDANGAN PERNIKAHAN\n';
+            txt += 'IQBAL CHOIRUL AWAMI & SHANIA SALSABILA\n';
+            txt += '='.repeat(60) + '\n\n';
+
+            bulkData.forEach((item, index) => {
+                txt += `[${index + 1}] ${item.name}\n`;
+                txt += `URL: ${item.url}\n`;
+                txt += `PESAN:\n${item.message}\n`;
+                txt += '\n' + '-'.repeat(60) + '\n\n';
+            });
+
+            const blob = new Blob([txt], { type: 'text/plain;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'bulk-whatsapp-messages.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Initialize
+        document.getElementById('messageTemplate').value = templates.formal;
+        document.getElementById('messageTemplate').addEventListener('input', updateCharCount);
+        updateCharCount();
+    </script>
+</body>
+
+</html>
